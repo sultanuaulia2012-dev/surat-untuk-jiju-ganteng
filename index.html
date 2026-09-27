@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surat Spesial Buat Kamu</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#ff9a9e 0%,#fad0c4 50%,#fbc2eb 100%);
+    font-family:'Segoe UI', sans-serif;
+    padding:20px;
+  }
+  .card {
+    max-width:500px; width:100%;
+    background:rgba(255,255,255,0.95);
+    border-radius:24px;
+    padding:40px 30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+    text-align:center;
+    animation:muncul 1s ease;
+  }
+  @keyframes muncul {
+    from { opacity:0; transform:translateY(40px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .hati { font-size:60px; animation:denyut 1.2s infinite; }
+  @keyframes denyut {
+    0%,100% { transform:scale(1); }
+    50% { transform:scale(1.15); }
+  }
+  h1 { color:#e91e63; margin:15px 0; font-size:24px; }
+  p { color:#444; line-height:1.8; margin:15px 0; font-size:16px; }
+  .nama { color:#e91e63; font-weight:bold; }
+  .btn {
+    display:inline-block; margin-top:20px;
+    padding:14px 30px;
+    background:linear-gradient(135deg,#e91e63,#ff6090);
+    color:#fff; text-decoration:none;
+    border-radius:50px; font-weight:bold;
+    border:none; cursor:pointer; font-size:16px;
+  }
+  .btn:hover { transform:scale(1.05); }
+  .jawaban { margin-top:25px; display:none; }
+  .jawaban button {
+    padding:12px 25px; margin:5px;
+    border:none; border-radius:50px;
+    font-size:16px; cursor:pointer; font-weight:bold;
+  }
+  .iya { background:#4caf50; color:#fff; }
+  .engga { background:#f44336; color:#fff; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hati">💌</div>
+  <h1>Hai, <span class="nama">[JIJU SAYANG]</span></h1>
+  <p>
+    Sebenernya aku udah lama pengen ngomong ini...<br><br>
+    Tiap liat kamu, rasanya beda. Gak tau kenapa.<br>
+    Aku suka cara kamu senyum, cara kamu ketawa,<br>
+    bahkan cara kamu diem aja bikin aku nyaman.<br><br>
+    <b>Mau gak kamu jadi seseorang yang spesial buat aku?</b>
+  </p>
+
+  <button class="btn" onclick="bukaPesan()">Buka Pesan Rahasia 💖</button>
+
+  <div class="jawaban" id="jawaban">
+    <p id="pesanAkhir"></p>
+    <button class="iya" onclick="jawab('iya')">Mau 💕</button>
+    <button class="engga" onclick="jawab('engga')">Cuma Teman 😔</button>
+  </div>
+
+  <div class="jawaban" id="hasil"></div>
+</div>
+
+<script>
+function bukaPesan() {
+  document.getElementById('pesanAkhir').innerHTML =
+    "Jujur, aku gak berani ngomong langsung.<br>Makanya aku bikin ini. 🙈<br><br>Jadi... gimana?";
+  document.getElementById('jawaban').style.display = 'block';
+  event.target.style.display = 'none';
+}
+
+function jawab(pilihan) {
+  const hasil = document.getElementById('hasil');
+  hasil.style.display = 'block';
+  if (pilihan === 'iya') {
+    hasil.innerHTML = "<h1>Yeay! 🎉💖</h1><p>Makasih ya. Aku bakal jaga kamu baik-baik. Janji! 🥰</p>";
+  } else {
+    hasil.innerHTML = "<h1>Gapapa 🙂</h1><p>Makasih udah jujur. Aku tetap seneng kenal kamu. 🤝</p>";
+  }
+  document.getElementById('jawaban').style.display = 'none';
+  event.target.parentElement.style.display = 'none';
+}
+</script>
+</body>
+</html>
